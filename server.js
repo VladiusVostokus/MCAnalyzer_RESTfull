@@ -6,14 +6,16 @@ const express = require('express');
 const app = express();
 
 app.use((req, res) => {
-    res.status(200).json({
-        message: "My serveraaaaaaaa"
-    });
+    res.status(200).json(
+        "My serveraaaaaaaa"
+    );
 });
 
 const PORT = process.env.PORT || 3000;
 const server = http.createServer(app);
-server.listen(PORT);
+server.listen(PORT, () => {
+    console.log("Запущено на порті 3000");
+});
 
 
 
