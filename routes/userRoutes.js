@@ -31,6 +31,12 @@ router.get('/:userId', (req,res,next) => {
     }
 });
 
+router.post('/:userId', (req,res,next) => {
+    res.status(201).json({
+        message:'User created'
+    });
+});
+
 router.patch('/:userId', (req,res,next) => {
     res.status(200).json({
         message:'Update user',
