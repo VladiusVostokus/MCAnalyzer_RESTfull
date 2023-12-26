@@ -10,16 +10,23 @@ const access = {
   password: process.env.DB_PASS,
 };
 
-const pool = mysql.createPool(access).promise();
+const dataBase = mysql.createConnection(access);
+dataBase.connect((err) => {
+  if (err) {
+    console.error('Database connection error ' + err.stack);
+    return;
+  }
+  console.log('Connected to database from id ' + dataBase.threadId);
+});
 
-const getRoles = async() => {
+/*const getRoles = async() => {
   const [result] = await pool.query(`SELECT * FROM mcanalyzer.role;`);
   return result;
 };
 
 (async () =>{
   console.log(await getRoles());
-})();
+})();*/
 
 
-module.exports = pool;
+module.exports = dataBase;
