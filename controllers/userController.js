@@ -1,6 +1,8 @@
 'use strict';
 
-const Get = (req,res,next) => {
+const dataBase = require('../database');
+
+/*const Get = (req,res,next) => {
     res.status(200).json({
         message:'Handling GET request to /userRouters'
     });
@@ -11,38 +13,42 @@ const Create = (req,res,next) => {
         message:'Handling POST request to /userRouters'
     });
 };
-
-const getUser = (req,res,next) => {
-    const id = req.params.userId;
-    if(id === '228') {
-        res.status(200).json({
-            message:'2281488',
-            id : id,
-        });
-    }
-    else {
-        res.status(200).json({
-            message:'just ID',
-        });
-    }
-};
+*/
 
 const createUser = (req,res,next) => {
-    res.status(201).json({
-        message:'User created'
+    const user = req.body;
+    const query = 'INSERT INTO User SET ?';
+
+    dataBase.query(query, user, (err, results) => {
+        if (err) throw err;
+        res.json({ id: results.insertId, ...user });
     });
 };
+
+const getUser = (req,res,next) => {
+
+    const id = req.params.id;
+    const query = `SELECT * FROM User WHERE id = ${id}`;
+    dataBase.query(query, (err, results) => {
+      if (err) throw err;
+      res.json(results);
+    });
+};
+
 
 const updateUser = (req,res,next) => {
     res.status(200).json({
         message:'Update user',
-    });
+    }); 
 };
 
 const deleteUser = (req,res,next) => {
-    res.status(200).json({
-        message:'Delete user'
+    const id = req.params.id;
+    const query = `DELETE FROM User WHERE id = ${id}`;
+    dataBase.query(query, (err) => {
+        if (err) throw err;
+        res.json({ id: id, message: 'User successfully deleted'});
     });
 };
 
-module.exports = {Get, Create, getUser, createUser, updateUser, deleteUser};
+module.exports = {getUser, createUser, updateUser, deleteUser};
