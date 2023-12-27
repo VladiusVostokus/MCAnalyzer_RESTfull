@@ -4,7 +4,11 @@ const express = require('express');
 const userController = require('../controllers/userController');
 const router = new express.Router();
 
-router.post('/',userController.createUser);
+
+router
+    .route('/')
+    .get(userController.getAllUsers)
+    .post(userController.createUser);
 
 router
     .route('/:id')

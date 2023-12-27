@@ -25,6 +25,14 @@ const createUser = (req,res,next) => {
     });
 };
 
+const getAllUsers = (req, res) => {
+    const query = 'SELECT * FROM User';
+    dataBase.query(query, (err, results) => {
+      if (err) throw err;
+      res.json(results);
+    });
+};
+
 const getUser = (req,res,next) => {
 
     const id = req.params.id;
@@ -51,4 +59,9 @@ const deleteUser = (req,res,next) => {
     });
 };
 
-module.exports = {getUser, createUser, updateUser, deleteUser};
+module.exports = {
+    createUser, 
+    getAllUsers, 
+    getUser, updateUser, 
+    deleteUser
+};
