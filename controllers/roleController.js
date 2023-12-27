@@ -2,7 +2,6 @@
 
 const dataBase = require('../database');
 
-
 const getAllRoles = (req,res,next) => {
     const query = 'SELECT * FROM Role';
     dataBase.query(query, (err, results) => {
@@ -21,5 +20,3 @@ const getRole = (req,res,next) => {
 };
 
 module.exports = {getAllRoles,getRole};
-
-
