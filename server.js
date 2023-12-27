@@ -6,7 +6,7 @@ const app = express();
 const userRoutes = require('./routes/userRoutes');
 const roleRoutes = require('./routes/roleRoutes');
 const resDataRoutes = require('./routes/resDataRoutes');
-const mentRepRouter = require('./routes/mentRepRouter');
+const mentRepRouter = require('./routes/mentRepRoutes');
 
 app.use(express.json());
 app.use('/userRoutes', userRoutes);

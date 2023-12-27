@@ -21,11 +21,3 @@ dataBase.connect((err) => {
 
 module.exports = dataBase;
 
-/*const getRoles = async() => {
-  const [result] = await pool.query(`SELECT * FROM mcanalyzer.role;`);
-  return result;
-};
-
-(async () =>{
-  console.log(await getRoles());
-})();*/
