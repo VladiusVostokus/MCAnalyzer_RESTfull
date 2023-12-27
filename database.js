@@ -19,6 +19,8 @@ dataBase.connect((err) => {
   console.log('Connected to database from id ' + dataBase.threadId);
 });
 
+module.exports = dataBase;
+
 /*const getRoles = async() => {
   const [result] = await pool.query(`SELECT * FROM mcanalyzer.role;`);
   return result;
@@ -27,6 +29,3 @@ dataBase.connect((err) => {
 (async () =>{
   console.log(await getRoles());
 })();*/
-
-
-module.exports = dataBase;
