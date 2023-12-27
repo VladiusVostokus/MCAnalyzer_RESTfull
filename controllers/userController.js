@@ -2,19 +2,6 @@
 
 const dataBase = require('../database');
 
-/*const Get = (req,res,next) => {
-    res.status(200).json({
-        message:'Handling GET request to /userRouters'
-    });
-};
-
-const Create = (req,res,next) => {
-    res.status(201).json({
-        message:'Handling POST request to /userRouters'
-    });
-};
-*/
-
 const createUser = (req,res,next) => {
     const user = req.body;
     const query = 'INSERT INTO User SET ?';

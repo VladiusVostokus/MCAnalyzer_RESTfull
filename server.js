@@ -4,11 +4,13 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const userRoutes = require('./routes/userRoutes');
-const roleRoutes = require('./routes/roleRouters');
+const roleRoutes = require('./routes/roleRoutes');
+//const resDataRoutes = require('./routes/resDataRoutes');
 
 app.use(express.json());
 app.use('/userRoutes', userRoutes);
 app.use('/roleRoutes', roleRoutes);
+//app.use('/resDataRoutes',resDataRoutes);
 
 app.use((req, res, next) => {
     const error = new Error("Not found");
