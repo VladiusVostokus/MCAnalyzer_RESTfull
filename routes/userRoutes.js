@@ -13,7 +13,7 @@ router
 router
     .route('/:id')
     .get(userController.getUser)
-    .patch(userController.updateUser)
+    .put(userController.updatePassword)
     .delete(userController.deleteUser);
 
 module.exports = router;

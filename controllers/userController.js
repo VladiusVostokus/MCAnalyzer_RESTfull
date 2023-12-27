@@ -31,10 +31,14 @@ const getUser = (req,res,next) => {
 };
 
 
-const updateUser = (req,res,next) => {
-    res.status(200).json({
-        message:'Update user',
-    }); 
+const updatePassword = (req,res,next) => {
+    const id = req.params.id;
+    const updatedData = req.body;
+    const query = `UPDATE User SET ? WHERE id = ${id}`;
+    dataBase.query(query, updatedData, (err) => {
+      if (err) throw err;
+      res.json({ id: id, ...updatedData });
+    });
 };
 
 const deleteUser = (req,res,next) => {
@@ -49,6 +53,6 @@ const deleteUser = (req,res,next) => {
 module.exports = {
     createUser, 
     getAllUsers, 
-    getUser, updateUser, 
+    getUser, updatePassword, 
     deleteUser
 };
