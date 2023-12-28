@@ -7,7 +7,7 @@ const createUser = (req,res,next) => {
     const query = 'INSERT INTO User SET ?';
 
     dataBase.query(query, user, (err, results) => {
-        if (err) throw err;
+        if (err) res.status(500).json(err);;
         res.json({ id: results.insertId, ...user });
     });
 };
