@@ -2,7 +2,7 @@
 
 const dataBase = require('../database');
 
-const getAllRoles = (req,res,next) => {
+const getAllRoles = (req,res) => {
     const query = 'SELECT * FROM Role';
     dataBase.query(query, (err, results) => {
       if (err) throw err;
@@ -10,7 +10,7 @@ const getAllRoles = (req,res,next) => {
     });
 };
 
-const getRole = (req,res,next) => {
+const getRole = (req,res) => {
     const id = req.params.id;
     const query = `SELECT * FROM Role WHERE id = ${id}`;
     dataBase.query(query, (err, results) => {

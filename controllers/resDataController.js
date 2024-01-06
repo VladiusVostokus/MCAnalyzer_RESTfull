@@ -2,7 +2,7 @@
 
 const dataBase = require('../database');
 
-const createResData = (req,res,next) => {
+const createResData = (req,res) => {
     const resData = req.body;
     const query = 'INSERT INTO ResultData SET ?';
 
@@ -12,7 +12,7 @@ const createResData = (req,res,next) => {
     });
 };
 
-const getAllResData = (req,res,next) => {
+const getAllResData = (req,res) => {
     const query = 'SELECT * FROM ResultData';
     dataBase.query(query, (err, results) => {
       if (err) throw err;
@@ -20,7 +20,7 @@ const getAllResData = (req,res,next) => {
     });
 };
 
-const getResData = (req,res,next) => {
+const getResData = (req,res) => {
     const id = req.params.id;
     const query = `SELECT * FROM ResultData WHERE id = ${id}`;
     dataBase.query(query, (err, results) => {
@@ -29,7 +29,7 @@ const getResData = (req,res,next) => {
     });
 };
 
-const delResData = (req,res,next) => {
+const delResData = (req,res) => {
     const id = req.params.id;
     const query = `DELETE FROM ResultData WHERE id = ${id}`;
     dataBase.query(query, (err) => {

@@ -2,7 +2,7 @@
 
 const dataBase = require('../database');
 
-const createUser = (req,res,next) => {
+const createUser = (req,res) => {
     const user = req.body;
     const query = 'INSERT INTO User SET ?';
 
@@ -20,7 +20,7 @@ const getAllUsers = (req, res) => {
     });
 };
 
-const getUser = (req,res,next) => {
+const getUser = (req,res) => {
 
     const id = req.params.id;
     const query = `SELECT * FROM User WHERE id = ${id}`;
@@ -31,7 +31,7 @@ const getUser = (req,res,next) => {
 };
 
 
-const updatePassword = (req,res,next) => {
+const updatePassword = (req,res) => {
     const id = req.params.id;
     const updatedData = req.body;
     const query = `UPDATE User SET ? WHERE id = ${id}`;
@@ -41,7 +41,7 @@ const updatePassword = (req,res,next) => {
     });
 };
 
-const deleteUser = (req,res,next) => {
+const deleteUser = (req,res) => {
     const id = req.params.id;
     const query = `DELETE FROM User WHERE id = ${id}`;
     dataBase.query(query, (err) => {

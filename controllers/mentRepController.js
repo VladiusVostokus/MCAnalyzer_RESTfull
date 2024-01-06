@@ -3,7 +3,7 @@
 const dataBase = require('../database');
 
 
-const createMentRep = (req,res,next) => {
+const createMentRep = (req,res) => {
     const mentRep = req.body;
     const query = 'INSERT INTO MentionReport SET ?';
 
@@ -21,7 +21,7 @@ const getAllMentReps = (req, res) => {
     });
 };
 
-const getMentRep = (req,res,next) => {
+const getMentRep = (req,res) => {
     const id = req.params.id;
     const query = `SELECT * FROM MentionReport WHERE id = ${id}`;
     dataBase.query(query, (err, results) => {
@@ -30,7 +30,7 @@ const getMentRep = (req,res,next) => {
     });
 };
 
-const delMentRep = (req,res,next) => {
+const delMentRep = (req,res) => {
     const id = req.params.id;
     const query = `DELETE FROM MentionReport WHERE id = ${id}`;
     dataBase.query(query, (err) => {
