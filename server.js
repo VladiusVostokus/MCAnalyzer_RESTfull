@@ -34,3 +34,14 @@ const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
+const closeServer = () => {
+    server.close(() => {
+        console.log('The app is closed');
+        process.exit();
+    });
+};
+
+process.on('SIGINT', closeServer);
+
+process.on('SIGTERM', closeServer);
